@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@color/background_color"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.register.RegisterActivity">
+
+
+    <ImageView
+        android:id="@+id/img_register_page"
+        android:layout_width="292dp"
+        android:layout_height="275dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/img_register_page2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="21dp"/>
+
+    <TextView
+        android:id="@+id/tv_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/plus_jakarta_sans_variable_font_wght"
+        android:text="@string/register"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_register_page" />
+
+    <com.bangkit.hear4u.component.CustomEditText
+        android:id="@+id/ed_register_username"
+        android:layout_marginTop="19dp"
+        android:layout_marginHorizontal="47dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_register"
+        android:background="@drawable/edit_text_background"
+        android:paddingHorizontal="20dp"
+        android:textColorHint="@color/primary_color"
+        android:fontFamily="@font/plus_sans_jakarta_medium"
+        android:textSize="18sp"
+        android:hint="@string/username"/>
+
+    <com.bangkit.hear4u.component.CustomEditText
+        android:id="@+id/ed_register_email"
+        android:layout_marginTop="19dp"
+        android:layout_marginHorizontal="47dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_username"
+        android:background="@drawable/edit_text_background"
+        android:paddingHorizontal="20dp"
+        android:textColorHint="@color/primary_color"
+        android:inputType="textEmailAddress"
+        android:fontFamily="@font/plus_sans_jakarta_medium"
+        android:textSize="18sp"
+        android:hint="@string/email"/>
+
+    <com.bangkit.hear4u.component.CustomEditText
+        android:id="@+id/ed_register_password"
+        android:layout_marginTop="19dp"
+        android:layout_marginHorizontal="47dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_email"
+        android:background="@drawable/edit_text_background"
+        android:paddingHorizontal="20dp"
+        android:textColorHint="@color/primary_color"
+        android:inputType="textPassword"
+        android:fontFamily="@font/plus_sans_jakarta_medium"
+        android:textSize="18sp"
+        android:hint="@string/password"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="47dp"
+        android:text="@string/register"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:fontFamily="@font/plus_sans_jakarta_semibold"
+        app:layout_constraintTop_toBottomOf="@+id/ed_register_password"
+        app:cornerRadius="10dp" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
