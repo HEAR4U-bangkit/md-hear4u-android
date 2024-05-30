@@ -4,4 +4,14 @@
     <string name="register">Register</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="hear4u">Hear4U</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="let_s_get_started">Let\'s Get Started!\"</string>
+    <string name="identify_various_types_of_audio">Identify various types of audio</string>
+    <string name="get_started">Get Started</string>
+    <string name="welcome">Welcome!</string>
+    <string name="let_s_unlock_the_world_of_sounds_around_you">Let\'s unlock the world of sounds \naround you.</string>
+    <string name="tv_continue">Continue</string>
+    <string name="login">Login</string>
 </resources>
