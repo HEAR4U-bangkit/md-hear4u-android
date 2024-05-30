@@ -29,7 +29,7 @@ class CustomEditText @JvmOverloads constructor(
                         }
                     }
                     InputType.TYPE_TEXT_VARIATION_PASSWORD or InputType.TYPE_CLASS_TEXT ->{
-                        if (input.length < 8){
+                        if (input.length < 7){
                             setError("Password must be at least 8 characters", null)
                         } else if(input.contains(" ")){
                             setError("Password cannot contain spaces", null)

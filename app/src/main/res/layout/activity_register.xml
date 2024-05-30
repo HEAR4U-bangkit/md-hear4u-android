@@ -84,8 +84,10 @@
         android:hint="@string/password"/>
 
     <Button
+        android:id="@+id/btn_submit_register"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:theme="@style/Base.Theme.Hear4U.ButtonVariant1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="50dp"
@@ -96,8 +98,6 @@
         android:fontFamily="@font/plus_sans_jakarta_semibold"
         app:layout_constraintTop_toBottomOf="@+id/ed_register_password"
         app:cornerRadius="10dp" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

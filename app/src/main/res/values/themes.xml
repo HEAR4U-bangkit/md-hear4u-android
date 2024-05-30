@@ -1,10 +1,20 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.Hear4U" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/primary_color</item>
-        <item name="backgroundColor">@color/background_color</item>
+        <item name="android:background">@color/background_color</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans_variable_font_wght</item>
     </style>
 
     <style name="Theme.Hear4U" parent="Base.Theme.Hear4U" />
+    <style name="Base.Theme.Hear4U.ButtonVariant1" parent="Widget.Material3.Button">
+        <item name="colorPrimary">@color/second_color</item>
+        <item name="colorOnPrimary">@color/primary_color</item>
+        <item name="android:strokeWidth">2</item>
+        <item name="android:strokeColor">@color/second_color</item>
+        <item name="android:textColor">@color/primary_color</item>
+    </style>
+
+
 </resources>
