@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Hear4U</string>
+    <string name="username">Username</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 </resources>
