@@ -1,4 +1,4 @@
-package com.bangkit.hear4u.di
+
 
 import android.content.Context
 import com.bangkit.hear4u.data.local.preferences.UserPreference
@@ -6,6 +6,7 @@ import com.bangkit.hear4u.data.local.preferences.dataStore
 import com.bangkit.hear4u.data.remote.api.ApiConfig
 import com.bangkit.hear4u.data.remote.repository.UserRepository
 import kotlinx.coroutines.flow.first
+
 import kotlinx.coroutines.runBlocking
 
 object Injection {
