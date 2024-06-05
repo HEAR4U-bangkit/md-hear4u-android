@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bangkit.hear4u.databinding.FragmentWelcomeBinding
+import com.bangkit.hear4u.ui.login.LoginActivity
 import com.bangkit.hear4u.ui.register.RegisterActivity
 
 class WelcomeFragment : Fragment() {
@@ -28,6 +29,10 @@ class WelcomeFragment : Fragment() {
         binding.btnGetStarted.setOnClickListener {
             val registIntent = Intent(requireContext(), RegisterActivity::class.java)
             startActivity(registIntent)
+        }
+        binding.btnLogin.setOnClickListener {
+            val loginIntent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(loginIntent)
         }
     }
     override fun onDestroyView() {

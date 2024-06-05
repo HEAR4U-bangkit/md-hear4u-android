@@ -6,11 +6,8 @@ import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.bangkit.hear4u.MainActivity
 import com.bangkit.hear4u.databinding.ActivitySplashScreenBinding
 import com.bangkit.hear4u.ui.landingPage.LandingActivity
-import com.bangkit.hear4u.ui.landingPage.LandingFragment
-import com.bangkit.hear4u.ui.register.RegisterActivity
 
 class SplashScreen : AppCompatActivity() {
     private lateinit var binding: ActivitySplashScreenBinding
