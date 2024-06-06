@@ -37,20 +37,11 @@ class LoginActivity : AppCompatActivity() {
 
         userPreference = UserPreference.getInstance(dataStore)
 
-        checkUserSession()
-
         showLoading(false)
         setupAction()
     }
 
-    private fun checkUserSession() {
-        lifecycleScope.launch {
-            val user = userPreference.getSession().first()
-            if (user.isLogin) {
-                navigateToMain()
-            }
-        }
-    }
+
 
     private fun setupAction() {
         binding.loginButton.setOnClickListener {
@@ -79,8 +70,8 @@ class LoginActivity : AppCompatActivity() {
                                             if (loginData != null && loginData.data != null && loginData.data.user != null) {
                                                 saveSession(
                                                     UserModel(
-                                                        loginData.data.token.toString(),
-                                                        loginData.data.user.fullname.toString(),
+                                                        loginData.data?.token.toString(),
+                                                        loginData.data?.user?.fullname.toString(),
                                                         email,
                                                         true
                                                     )
@@ -110,20 +101,16 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveSession(user: UserModel) {
+    private fun saveSession(session: UserModel) {
         lifecycleScope.launch {
-            userPreference.saveSession(user)
-            navigateToMain()
+            viewModel.saveSession(session)
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            ViewModelFactory.clearInstance()
+            startActivity(intent)
         }
     }
 
-    private fun navigateToMain() {
-        val intent = Intent(this@LoginActivity, MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        ViewModelFactory.clearInstance()
-        startActivity(intent)
-        finish()
-    }
 
     override fun onDestroy() {
         super.onDestroy()

@@ -47,9 +47,7 @@ class UserRepository private constructor (
         return userPreferences.getSession()
     }
 
-
-
-
+    
     companion object {
         @Volatile
         private var instance: UserRepository? = null

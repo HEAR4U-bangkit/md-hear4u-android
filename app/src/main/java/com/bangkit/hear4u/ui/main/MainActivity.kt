@@ -3,18 +3,15 @@ package com.bangkit.hear4u.ui.main
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.ImageButton
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.hear4u.R
-
 import com.bangkit.hear4u.databinding.ActivityMainBinding
 import com.bangkit.hear4u.ui.ViewModelFactory
 import com.bangkit.hear4u.ui.landingPage.WelcomeFragment
-
 
 class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainViewModel> {
@@ -28,10 +25,9 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         getSession()
         setupView()
-
+        setupClickListeners()
     }
 
     private fun setupView() {
@@ -44,10 +40,7 @@ class MainActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
-
     }
-
-
 
     private fun getSession() {
         viewModel.getSession().observe(this) { user ->
@@ -62,5 +55,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupClickListeners() {
+        val profileButton: ImageButton = findViewById(R.id.profil)
 
+        profileButton.setOnClickListener {
+
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
