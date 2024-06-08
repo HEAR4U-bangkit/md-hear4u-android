@@ -1,12 +1,8 @@
 package com.bangkit.hear4u.ui.landingPage
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.bangkit.hear4u.R
-import com.bangkit.hear4u.data.local.preferences.UserPreference
-import com.bangkit.hear4u.data.local.preferences.dataStore
 import com.bangkit.hear4u.databinding.ActivityLandingBinding
 import com.bangkit.hear4u.ui.main.MainActivity
 import kotlinx.coroutines.flow.first

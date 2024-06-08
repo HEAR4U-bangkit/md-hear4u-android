@@ -3,15 +3,24 @@ package com.bangkit.hear4u.ui.main
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.hear4u.R
+import com.bangkit.hear4u.data.adapter.ArticleAdapter
 import com.bangkit.hear4u.databinding.ActivityMainBinding
+import com.bangkit.hear4u.di.StateResult
 import com.bangkit.hear4u.ui.ViewModelFactory
 import com.bangkit.hear4u.ui.landingPage.WelcomeFragment
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainViewModel> {
@@ -50,6 +59,41 @@ class MainActivity : AppCompatActivity() {
                     replace(R.id.fragment_container, fragment)
                     addToBackStack(null)
                     commit()
+                }
+            } else {
+                Log.d("JWT Token from Session", user.token)
+                setupAction(user.token)
+            }
+        }
+        val layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.layoutManager = layoutManager
+        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+        binding.recyclerView.addItemDecoration(itemDecoration)
+    }
+
+    private fun setupAction(token: String) {
+        lifecycleScope.launch {
+            viewModel.getArticle().observe(this@MainActivity) { article ->
+                when (article) {
+                    is StateResult.Error -> {
+                        binding.progressBar3.visibility = View.INVISIBLE
+                        val error = article.error
+                        Toast.makeText(this@MainActivity, error, Toast.LENGTH_SHORT).show()
+
+                    }
+
+                    is StateResult.Loading -> {
+                        binding.progressBar3.visibility = View.VISIBLE
+
+                    }
+
+                    is StateResult.Success -> {
+                        binding.progressBar3.visibility = View.INVISIBLE
+                        val adapter = ArticleAdapter()
+                        adapter.submitList(article.data)
+                        binding.recyclerView.adapter = adapter
+
+                    }
                 }
             }
         }
