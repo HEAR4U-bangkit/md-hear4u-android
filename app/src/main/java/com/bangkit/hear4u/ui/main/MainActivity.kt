@@ -61,17 +61,18 @@ class MainActivity : AppCompatActivity() {
                     commit()
                 }
             } else {
-                Log.d("JWT Token from Session", user.token)
-                setupAction(user.token)
+                binding.helloHome.text = getString(R.string.hello_user_placeholder, user.email)
+                setupAction()
             }
         }
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-        binding.recyclerView.addItemDecoration(itemDecoration)
+
+
+
     }
 
-    private fun setupAction(token: String) {
+    private fun setupAction() {
         lifecycleScope.launch {
             viewModel.getArticle().observe(this@MainActivity) { article ->
                 when (article) {

@@ -43,8 +43,6 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         dataStore.edit { preferences ->
             preferences.clear()
         }
-        // Logging for debugging
-        println("User session cleared.")
     }
 
     companion object {

@@ -26,10 +26,16 @@ class SplashScreen : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         // Handler().postDelayed({
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, LandingActivity::class.java)
+        lifecycleScope.launch {
+            val userPreferences = UserPreferences.getInstance(dataStore)
+            val user = userPreferences.getSession().first()
+            val intent = if (user.isLogin) {
+                Intent(this@SplashScreen, MainActivity::class.java)
+            } else {
+                Intent(this@SplashScreen, LandingActivity::class.java)
+            }
             startActivity(intent)
             finish()
-        }, 3000)
+        }
     }
 }
