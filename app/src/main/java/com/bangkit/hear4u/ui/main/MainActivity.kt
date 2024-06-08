@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                     commit()
                 }
             } else {
-                binding.helloHome.text = getString(R.string.hello_user_placeholder, user.email)
+                binding.helloHome.text = getString(R.string.hello_user_placeholder, user.fullname)
                 setupAction()
             }
         }
