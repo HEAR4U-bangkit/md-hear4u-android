@@ -20,4 +20,7 @@
     <string name="ask_home">let\'s see, what can i do for you?</string>
     <string name="chit_home">Help People to talk \nwith you</string>
     <string name="information_title">Helpful Information</string>
+    <string name="button_back">Button Back</string>
+    <string name="ini_judul">Ini Judul</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra felis at arcu varius, ac venenatis nisi luctus. Pellentesque lobortis tincidunt aliquet. Phasellus a tellus metus. Maecenas vel enim nec lorem egestas consequat in non lacus. Pellentesque luctus leo sit amet fringilla rhoncus. Nulla sit amet turpis in sem viverra dignissim. Quisque sed purus eget nibh faucibus egestas. Duis sodales blandit interdum. Etiam eu justo ac enim tincidunt dignissim. Cras tempus ante at magna consectetur hendrerit.</string>
 </resources>
