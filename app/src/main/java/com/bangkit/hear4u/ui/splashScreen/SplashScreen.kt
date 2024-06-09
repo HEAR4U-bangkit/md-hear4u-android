@@ -6,8 +6,14 @@ import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.bangkit.hear4u.data.local.preferences.UserPreferences
+import com.bangkit.hear4u.data.local.preferences.dataStore
 import com.bangkit.hear4u.databinding.ActivitySplashScreenBinding
 import com.bangkit.hear4u.ui.landingPage.LandingActivity
+import com.bangkit.hear4u.ui.main.MainActivity
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class SplashScreen : AppCompatActivity() {
     private lateinit var binding: ActivitySplashScreenBinding
@@ -20,10 +26,16 @@ class SplashScreen : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         // Handler().postDelayed({
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, LandingActivity::class.java)
+        lifecycleScope.launch {
+            val userPreferences = UserPreferences.getInstance(dataStore)
+            val user = userPreferences.getSession().first()
+            val intent = if (user.isLogin) {
+                Intent(this@SplashScreen, MainActivity::class.java)
+            } else {
+                Intent(this@SplashScreen, LandingActivity::class.java)
+            }
             startActivity(intent)
             finish()
-        }, 3000)
+        }
     }
 }

@@ -1,12 +1,12 @@
 package com.bangkit.hear4u.ui.landingPage
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bangkit.hear4u.R
 import com.bangkit.hear4u.databinding.ActivityLandingBinding
+import com.bangkit.hear4u.ui.main.MainActivity
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class LandingActivity : AppCompatActivity() {
     private lateinit var binding : ActivityLandingBinding

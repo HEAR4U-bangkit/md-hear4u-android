@@ -64,4 +64,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.0")
     //DataStore
     implementation("androidx.datastore:datastore-preferences:1.1.1")
+
+    //fragment
+    implementation("androidx.vectordrawable:vectordrawable:1.1.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 }

@@ -1,5 +1,6 @@
 package com.bangkit.hear4u.data.remote.api
 
+import android.util.Log
 import com.bangkit.hear4u.BuildConfig.DEBUG
 import com.bangkit.hear4u.BuildConfig.BASE_URL
 import okhttp3.Interceptor
@@ -11,14 +12,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiConfig {
     companion object {
         fun getApiService(token: String): ApiService {
-            val loggingInterceptor = if (DEBUG) {
-                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-            } else {
-                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.NONE)
-            }
+            val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             val authInterceptor = Interceptor { chain ->
-                val request = chain.request()
-                val requestHeaders = request.newBuilder()
+                val req = chain.request()
+                Log.d("ApiConfig", "Requesting with token: $token")  // Log the token
+                val requestHeaders = req.newBuilder()
                     .addHeader("Authorization", "Bearer $token")
                     .build()
                 chain.proceed(requestHeaders)
