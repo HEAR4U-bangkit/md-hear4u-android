@@ -12,13 +12,13 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.hear4u.R
 import com.bangkit.hear4u.data.adapter.ArticleAdapter
 import com.bangkit.hear4u.databinding.ActivityMainBinding
 import com.bangkit.hear4u.di.StateResult
 import com.bangkit.hear4u.ui.ViewModelFactory
+import com.bangkit.hear4u.ui.landingPage.LandingActivity
 import com.bangkit.hear4u.ui.landingPage.WelcomeFragment
 import kotlinx.coroutines.launch
 
@@ -26,12 +26,11 @@ class MainActivity : AppCompatActivity() {
     private val viewModel by viewModels<MainViewModel> {
         ViewModelFactory.getInstance(this)
     }
-    private var _binding: ActivityMainBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         getSession()
@@ -54,12 +53,9 @@ class MainActivity : AppCompatActivity() {
     private fun getSession() {
         viewModel.getSession().observe(this) { user ->
             if (!user.isLogin) {
-                val fragment = WelcomeFragment()
-                supportFragmentManager.beginTransaction().apply {
-                    replace(R.id.fragment_container, fragment)
-                    addToBackStack(null)
-                    commit()
-                }
+                val intent = Intent(this, LandingActivity::class.java)
+                startActivity(intent)
+                finish()
             } else {
                 binding.helloHome.text = getString(R.string.hello_user_placeholder, user.fullname)
                 setupAction()
@@ -67,8 +63,6 @@ class MainActivity : AppCompatActivity() {
         }
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-
-
 
     }
 
@@ -101,15 +95,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
-        val profileButton: ImageButton = findViewById(R.id.profil)
-
-        profileButton.setOnClickListener {
+        binding.profil.setOnClickListener {
 
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }

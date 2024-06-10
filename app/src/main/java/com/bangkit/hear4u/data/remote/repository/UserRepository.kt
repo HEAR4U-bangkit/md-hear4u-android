@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.bangkit.hear4u.data.local.preferences.UserModel
 import com.bangkit.hear4u.data.local.preferences.UserPreferences
-
 import com.bangkit.hear4u.data.remote.api.ApiService
 import com.bangkit.hear4u.data.remote.response.DataItem
+import com.bangkit.hear4u.data.remote.response.DetailArticleResponse
 import com.bangkit.hear4u.data.remote.response.ErrorResponse
 import com.bangkit.hear4u.data.remote.response.LoginResponse
 import com.bangkit.hear4u.data.remote.response.RegisterResponse
@@ -58,6 +58,20 @@ class UserRepository private constructor (
             emit(StateResult.Error(errorResponse.message ?: "Unknown HTTP error"))
         } catch (e: Exception) {
             Log.e("UserRepository", "Exception: ${e.message}")
+            emit(StateResult.Error(e.message ?: "Unknown error"))
+        }
+    }
+
+    fun getArticleById(id: String): LiveData<StateResult<DetailArticleResponse>> = liveData {
+        emit(StateResult.Loading)
+        try {
+            val response = apiService.getDetailArticles(id)
+            emit(StateResult.Success(response))
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(errorBody, DetailArticleResponse::class.java)
+            emit(StateResult.Error(errorResponse.message))
+        } catch (e: Exception) {
             emit(StateResult.Error(e.message ?: "Unknown error"))
         }
     }
