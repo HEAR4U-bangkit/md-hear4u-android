@@ -17,23 +17,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:minHeight="?attr/actionBarSize"
             app:title="@string/hear4u"
             app:navigationIcon="@drawable/ic_back">
-
-<!--            <ImageButton-->
-<!--                android:id="@+id/back_button"-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:background="?attr/selectableItemBackground"-->
-<!--                android:contentDescription="@string/button_back"-->
-<!--                android:src="@drawable/ic_arrow_back"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

@@ -23,4 +23,18 @@
     <string name="button_back">Button Back</string>
     <string name="ini_judul">Ini Judul</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum viverra felis at arcu varius, ac venenatis nisi luctus. Pellentesque lobortis tincidunt aliquet. Phasellus a tellus metus. Maecenas vel enim nec lorem egestas consequat in non lacus. Pellentesque luctus leo sit amet fringilla rhoncus. Nulla sit amet turpis in sem viverra dignissim. Quisque sed purus eget nibh faucibus egestas. Duis sodales blandit interdum. Etiam eu justo ac enim tincidunt dignissim. Cras tempus ante at magna consectetur hendrerit.</string>
+    <string name="help_people_to_talk_nwith_you">Help People to talk \nwith you</string>
+    <string name="hi_john_doe">Hi, John Doe</string>
+    <string name="ini_user">ini User</string>
+    <string name="photoprofile">photoProfile</string>
+    <string name="output">Output</string>
+    <string name="chit_chat">Chit Chat!</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="about">About</string>
+    <string name="logout">Logout</string>
+    <string name="full_name">Full Name</string>
+    <string name="old_password">Old Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="save">Save</string>
+    <string name="new_password">New Password</string>
 </resources>

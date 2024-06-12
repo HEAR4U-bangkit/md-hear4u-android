@@ -3,11 +3,9 @@ package com.bangkit.hear4u.ui.main
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +17,7 @@ import com.bangkit.hear4u.databinding.ActivityMainBinding
 import com.bangkit.hear4u.di.StateResult
 import com.bangkit.hear4u.ui.ViewModelFactory
 import com.bangkit.hear4u.ui.landingPage.LandingActivity
-import com.bangkit.hear4u.ui.landingPage.WelcomeFragment
+import com.bangkit.hear4u.ui.profile.ProfileActivity
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -28,10 +26,12 @@ class MainActivity : AppCompatActivity() {
     }
     private lateinit var binding: ActivityMainBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         getSession()
         setupView()
@@ -87,7 +87,6 @@ class MainActivity : AppCompatActivity() {
                         val adapter = ArticleAdapter()
                         adapter.submitList(article.data)
                         binding.recyclerView.adapter = adapter
-
                     }
                 }
             }
@@ -96,7 +95,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupClickListeners() {
         binding.profil.setOnClickListener {
-
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
         }
     }
 }
