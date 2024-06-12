@@ -12,6 +12,7 @@ import com.bangkit.hear4u.data.local.preferences.dataStore
 import com.bangkit.hear4u.databinding.ActivitySplashScreenBinding
 import com.bangkit.hear4u.ui.landingPage.LandingActivity
 import com.bangkit.hear4u.ui.main.MainActivity
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -27,6 +28,7 @@ class SplashScreen : AppCompatActivity() {
         )
         // Handler().postDelayed({
         lifecycleScope.launch {
+            delay(5000)
             val userPreferences = UserPreferences.getInstance(dataStore)
             val user = userPreferences.getSession().first()
             val intent = if (user.isLogin) {

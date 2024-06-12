@@ -57,10 +57,11 @@ class RegisterActivity : AppCompatActivity() {
                             create()
                             show()
                         }
+                        Toast.makeText(this, result.data.message, Toast.LENGTH_SHORT).show()
+
                     }
                     is StateResult.Error ->{
-                        result.error
-                        Log.d("Error Bikin Akun", result.error)
+                        Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
                         loading(false)
                     }
                 }
