@@ -4,6 +4,4 @@
         android:font="@font/plus_jakarta_sans_variable_font_wght"
         android:fontWeight="600"
         android:fontStyle="normal"/>
-
-
 </font-family>

@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.hear4u.data.remote.repository.UserRepository
+import com.bangkit.hear4u.ui.article.DetailArtcleViewModel
 import com.bangkit.hear4u.ui.login.LoginViewModel
 import com.bangkit.hear4u.ui.main.MainViewModel
+import com.bangkit.hear4u.ui.profile.ProfileViewModel
 import com.bangkit.hear4u.ui.register.RegisterViewModel
 
 class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.NewInstanceFactory() {
@@ -20,6 +22,12 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             }
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(DetailArtcleViewModel::class.java) -> {
+                DetailArtcleViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                ProfileViewModel(repository) as T
             }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)

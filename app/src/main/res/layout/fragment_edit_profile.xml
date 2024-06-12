@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.EditProfileFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/rectangle_profile2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="-75dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/photoprofile"
+                android:src="@drawable/profile_photo_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/plus_sans_jakarta_semibold"
+                android:text="@string/ini_user"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_profile" />
+
+            <LinearLayout
+                android:id="@+id/input_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_username">
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+
+                    android:text="@string/email" />
+
+                <com.bangkit.hear4u.component.CustomEditText
+                    android:id="@+id/ed_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/plus_sans_jakarta_medium"
+                    android:inputType="textEmailAddress"
+                    android:paddingHorizontal="20dp"
+                    android:textColorHint="@color/primary_color"
+                    android:textSize="18sp"
+                    android:hint="@string/email"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+                <TextView
+                    android:id="@+id/tv_fullname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:color/transparent"
+                    android:text="@string/full_name" />
+
+                <com.bangkit.hear4u.component.CustomEditText
+                    android:id="@+id/ed_fullname"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/plus_sans_jakarta_medium"
+                    android:paddingHorizontal="20dp"
+                    android:textColorHint="@color/primary_color"
+                    android:textSize="18sp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_username"
+                    android:hint="@string/full_name"/>
+
+                <TextView
+                    android:id="@+id/tv_old_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:color/transparent"
+                    android:text="@string/old_password" />
+
+                <com.bangkit.hear4u.component.CustomEditText
+                    android:id="@+id/ed_old_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/plus_sans_jakarta_medium"
+                    android:inputType="textPassword"
+                    android:paddingHorizontal="20dp"
+                    android:textColorHint="@color/primary_color"
+                    android:textSize="18sp"
+                    android:hint="@string/old_password"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+                <TextView
+                    android:id="@+id/tv_new_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:color/transparent"
+                    android:text="@string/new_password" />
+
+                <com.bangkit.hear4u.component.CustomEditText
+                    android:id="@+id/ed_new_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/plus_sans_jakarta_medium"
+                    android:paddingHorizontal="20dp"
+                    android:textColorHint="@color/primary_color"
+                    android:hint="@string/new_password"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm_new_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:color/transparent"
+                    android:text="@string/confirm_new_password" />
+
+                <com.bangkit.hear4u.component.CustomEditText
+                    android:id="@+id/ed_confirm_new_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_background"
+                    android:fontFamily="@font/plus_sans_jakarta_medium"
+                    android:inputType="textPassword"
+                    android:paddingHorizontal="20dp"
+                    android:textColorHint="@color/primary_color"
+                    android:hint="@string/confirm_new_password"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="100dp"
+                android:layout_height="65dp"
+                android:layout_marginEnd="26dp"
+                android:text="@string/save"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_container" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+</FrameLayout>

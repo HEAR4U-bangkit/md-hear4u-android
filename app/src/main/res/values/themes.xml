@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/primary_color</item>
         <item name="android:background">@color/background_color</item>
         <item name="android:fontFamily">@font/plus_jakarta_sans_variable_font_wght</item>
+        <item name="materialSwitchStyle">@style/Widget.App.Switch</item>
     </style>
 
     <style name="Theme.Hear4U" parent="Base.Theme.Hear4U" />
@@ -16,5 +17,20 @@
         <item name="android:textColor">@color/primary_color</item>
     </style>
 
+
+    <style name="Widget.App.Switch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Switch</item>
+    </style>
+    <style name="ThemeOverlay.App.Switch" parent="">
+        <item name="colorOutline">@color/tertiary</item>
+        <item name="colorSurface">@color/second_color</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/primary_color</item>
+    </style>
+
+<!--    <style name="CustomSwitchStyle" parent="Widget.AppCompat.CompoundButton.Switch">-->
+<!--        <item name="android:thumb">@drawable/custom_thumb</item>-->
+<!--        <item name="android:track">@drawable/custom_track</item>-->
+<!--    </style>-->
 
 </resources>

@@ -1,5 +1,6 @@
 package com.bangkit.hear4u.data.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.hear4u.data.remote.response.DataItem
 import com.bangkit.hear4u.databinding.ItemBinding
+import com.bangkit.hear4u.ui.article.DetailArticleActivity
 import com.bumptech.glide.Glide
 
 class  ArticleAdapter : ListAdapter<DataItem, ArticleAdapter.ArticleViewHolder>(DIFF_CALLBACK) {
@@ -29,7 +31,12 @@ class  ArticleAdapter : ListAdapter<DataItem, ArticleAdapter.ArticleViewHolder>(
                 .load(item.thumbnail) // Assuming 'photoUrl' is a field in ListStoryItem
                 .into(binding.imgItemPhoto)
             itemView.setOnClickListener {
-
+                val intent = Intent(itemView.context, DetailArticleActivity::class.java)
+                intent.putExtra("EXTRA_ID", item.id)
+//                intent.putExtra("EXTRA_TITLE", item.title)
+//                intent.putExtra("EXTRA_CONTENT", item.content)
+//                intent.putExtra("EXTRA_THUMBNAIL", item.thumbnail)
+                itemView.context.startActivity(intent)
             }
         }
     }
