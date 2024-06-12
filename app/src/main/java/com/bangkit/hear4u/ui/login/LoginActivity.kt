@@ -65,10 +65,10 @@ class LoginActivity : AppCompatActivity() {
                                     )
                                 )
                             }
-                            Log.e("login",user.data.data.token)
                             create()
                             show()
                         }
+                        Toast.makeText(this, user.data.message, Toast.LENGTH_SHORT).show()
                     }
                     is StateResult.Loading ->{
                         binding.progressBar2.visibility = View.VISIBLE

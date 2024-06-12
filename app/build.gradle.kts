@@ -71,4 +71,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    //Material
+    implementation ("androidx.compose.material3:material3:1.2.1")
+
 }

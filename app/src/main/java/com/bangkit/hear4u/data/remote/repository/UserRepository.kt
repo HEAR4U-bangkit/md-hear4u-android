@@ -45,6 +45,10 @@ class UserRepository private constructor (
         }
     }
 
+    suspend fun logout(){
+        userPreferences.logout()
+    }
+
     fun getArticle(): LiveData<StateResult<List<DataItem>>> = liveData {
         emit(StateResult.Loading)
         try {

@@ -21,7 +21,11 @@ class DetailArticleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailArticleBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding
 
+        binding.toolbar.setNavigationOnClickListener {
+            finish()
+        }
         setupView()
     }
 
