@@ -90,6 +90,7 @@ class SpeechToTextConverter(private val context: Context, private val onRecognit
     fun stopListening() {
         try {
             speechRecognizer.stopListening()
+            onRecognitionListener.onEndOfSpeech()  // Call this to handle UI changes
         } catch (ex: Exception) {
             onRecognitionListener.onError("${ex.message}")
             Log.e(TAG_RECOGNITION, "${ex.message}")

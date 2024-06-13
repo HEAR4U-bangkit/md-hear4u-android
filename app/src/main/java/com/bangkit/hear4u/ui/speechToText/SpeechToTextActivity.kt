@@ -45,6 +45,12 @@ class SpeechToTextActivity : AppCompatActivity(), onRecognitionListener  {
             // Start listening with Indonesian language
             speechToTextConverter.startListening("id-ID")
         }
+
+        binding.lavMicAnimation.setOnClickListener {
+            // Stop listening when animation is clicked
+            speechToTextConverter.stopListening()
+            binding.lavMicAnimation.pauseAnimation()  // Pause the animation
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -78,7 +84,15 @@ class SpeechToTextActivity : AppCompatActivity(), onRecognitionListener  {
 
     override fun onBeginningOfSpeech() {}
 
-    override fun onEndOfSpeech() {}
+    override fun onEndOfSpeech() {
+        binding.lavMicAnimation.visibility = View.GONE
+        binding.lavMicAnimation.cancelAnimation()  // Ensure animation is stopped
+        binding.btnSpeak.visibility = View.VISIBLE
+        binding.tvResult.visibility = View.VISIBLE
+        binding.loading.visibility = View.GONE
+        binding.logo.visibility = View.GONE
+        binding.listen.visibility = View.GONE
+    }
 
     override fun onError(error: String) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
