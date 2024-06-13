@@ -35,6 +35,8 @@
     <string name="full_name">Full Name</string>
     <string name="old_password">Old Password</string>
     <string name="confirm_new_password">Confirm New Password</string>
-    <string name="save">Save</string>
+    <string name="save">Save Change</string>
     <string name="new_password">New Password</string>
+    <string name="change_password">Change Password</string>
+    <string name="about_text">This project aims to assist people with hearing disabilities who struggle to identify sounds in their environment, affecting their social activities and interactions. While hearing aids are available, they may not always be affordable or fully meet the users\' needs. The app operates by capturing sounds via a microphone and presenting speech recognition results visually on the user\'s screen, enhancing their ability to comprehend and respond to surrounding sounds. The research questions for this project are how to build a tool that can detect sound types easily and accurately, how to ensure Hear4U is accessible and usable by a wide range of people with hearing disabilities, and how well the app can help people with hearing disabilities in carrying out their activities. Our team wants to help people who are hard of hearing to communicate more easily and actively interact with their surroundings. The project aims to create a simple and easy-to-use tool that can improve their quality of life and social skills. Hear4U will make it easier for them to hear and respond to surrounding sounds better, so they can be more confident and independent in their daily activities.</string>
 </resources>
