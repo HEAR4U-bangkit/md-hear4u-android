@@ -231,14 +231,13 @@
 
                         <TextView
                             android:id="@+id/textView20"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="133dp"
+                            android:layout_height="43dp"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="4dp"
-                            android:layout_marginEnd="16dp"
                             android:background="#00FFFFFF"
                             android:fontFamily="@font/plus_sans_jakarta_medium"
-                            android:text="@string/help_people_to_talk_nwith_you"
+                            android:text="@string/hear"
                             android:textColor="@color/background_color"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/guideline3" />
@@ -263,14 +262,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_margin="20dp"
-                android:background="@android:color/transparent">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/rectangle_output"
-                    tools:layout_editor_absoluteX="0dp"
-                    tools:layout_editor_absoluteY="16dp" />
+                android:background="@drawable/rectangle_output"
+                >
 
                 <TextView
                     android:id="@+id/textView17"
@@ -291,6 +284,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
+                android:id="@+id/bawah"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -325,8 +319,10 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/recyclerView"
+                    app:layout_constraintVertical_bias="0.55" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

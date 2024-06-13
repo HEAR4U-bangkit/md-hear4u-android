@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+
 }
 
 android {
@@ -51,17 +52,21 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
     //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
     //glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+
     //viewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
     implementation("androidx.activity:activity-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.0")
+
     //DataStore
     implementation("androidx.datastore:datastore-preferences:1.1.1")
 
@@ -73,5 +78,7 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     //Material
     implementation ("androidx.compose.material3:material3:1.2.1")
+
+    implementation("com.airbnb.android:lottie:5.2.0")
 
 }

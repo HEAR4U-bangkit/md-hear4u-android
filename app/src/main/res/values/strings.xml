@@ -17,7 +17,7 @@
     <string name="tv_continue">Continue</string>
     <string name="hear4u">Hear4U</string>
     <string name="hello_user_placeholder">Hi, %1$s</string>
-    <string name="ask_home">let\'s see, what can i do for you?</string>
+    <string name="ask_home">Let\'s see, what can i do for you?</string>
     <string name="chit_home">Help People to talk \nwith you</string>
     <string name="information_title">Helpful Information</string>
     <string name="button_back">Button Back</string>
@@ -37,4 +37,5 @@
     <string name="confirm_new_password">Confirm New Password</string>
     <string name="save">Save</string>
     <string name="new_password">New Password</string>
+    <string name="hear">Identify various types of audio</string>
 </resources>

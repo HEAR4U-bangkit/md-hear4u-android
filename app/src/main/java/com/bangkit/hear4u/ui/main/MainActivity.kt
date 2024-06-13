@@ -18,6 +18,7 @@ import com.bangkit.hear4u.di.StateResult
 import com.bangkit.hear4u.ui.ViewModelFactory
 import com.bangkit.hear4u.ui.landingPage.LandingActivity
 import com.bangkit.hear4u.ui.profile.ProfileActivity
+import com.bangkit.hear4u.ui.speechToText.SpeechToTextActivity
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -31,8 +32,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
+        
         getSession()
         setupView()
         setupClickListeners()
@@ -96,6 +96,10 @@ class MainActivity : AppCompatActivity() {
     private fun setupClickListeners() {
         binding.profil.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+        binding.speechText.setOnClickListener {
+            val intent = Intent(this, SpeechToTextActivity::class.java)
             startActivity(intent)
         }
     }
