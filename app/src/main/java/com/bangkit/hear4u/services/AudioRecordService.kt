@@ -15,8 +15,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.json.JSONObject
-
 import java.util.concurrent.Executors
 
 class AudioRecordService : Service() {
@@ -35,7 +33,6 @@ class AudioRecordService : Service() {
 
     private val accumulatedAudio = mutableListOf<Short>()
 
-
     override fun onBind(intent: Intent): IBinder {
         throw UnsupportedOperationException("Not yet implemented")
     }
@@ -46,7 +43,6 @@ class AudioRecordService : Service() {
         SocketManager.on("response", onServerResponse)
     }
 
-
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Log.d("AudioService", "Sedang Merekam")
         serviceScope.launch {
@@ -54,14 +50,16 @@ class AudioRecordService : Service() {
         }
         return START_STICKY
     }
+
     override fun onDestroy() {
         super.onDestroy()
         serviceJob.cancel()
         stopRecording()
+        SocketManager.off("response", onServerResponse) // Unregister the listener
         Log.d("AudioService", "onDestroy: Service dihentikan")
     }
 
-    //Start Recording
+    // Start Recording
     private fun startRecording() {
 
         if (ActivityCompat.checkSelfPermission(
@@ -69,13 +67,6 @@ class AudioRecordService : Service() {
                 Manifest.permission.RECORD_AUDIO
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return
         }
         audioRecord = AudioRecord(MediaRecorder.AudioSource.MIC, SAMPLE_RATE, CHANNEL_CONFIG, AUDIO_FORMAT, bufferSize)
@@ -114,15 +105,14 @@ class AudioRecordService : Service() {
         }
         SocketManager.emit("predict_audio", audioData)
         Log.d(TAG, "Sent audio data: ${audioData.size} bytes")
-
     }
 
     private val onServerResponse = Emitter.Listener { args ->
-        val response = args[0] as JSONObject // Assuming server response is a String
-        val intent = Intent("com.example.realtime sound.SERVER_RESPONSE")
+        val response = args[0] // Assuming server response is a JSONObject
+        val intent = Intent("com.bangkit.hear4u.SERVER_RESPONSE")
         intent.putExtra("response", response.toString())
         sendBroadcast(intent)
-        Log.d(TAG, "Received server response: ${response.toString()}")
+        Log.d(TAG, "Received server response: ${response}")
     }
 
     private fun stopRecording() {
@@ -134,5 +124,4 @@ class AudioRecordService : Service() {
             Log.d(TAG, "Recording stopped")
         }
     }
-
 }

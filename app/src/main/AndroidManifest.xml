@@ -14,11 +14,12 @@
         android:roundIcon="@drawable/profile_photo_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hear4U"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <service
             android:name=".services.AudioRecordService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="false" />
 
         <activity
             android:name=".ui.profile.ProfileActivity"
@@ -37,7 +38,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.splashScreen.SplashScreen"
             android:exported="true">

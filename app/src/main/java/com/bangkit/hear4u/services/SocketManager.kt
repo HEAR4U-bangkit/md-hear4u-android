@@ -35,6 +35,9 @@ object SocketManager {
     fun on(event: String, listener: Emitter.Listener) {
         mSocket?.on(event, listener)
     }
+    fun off(event: String, listener: Emitter.Listener) {
+        mSocket?.off(event, listener)
+    }
 
     private val onConnect = Emitter.Listener {
         Log.d("SocketManager", "Connected to server")
