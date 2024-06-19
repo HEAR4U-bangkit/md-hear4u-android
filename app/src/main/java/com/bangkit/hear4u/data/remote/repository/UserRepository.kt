@@ -59,11 +59,11 @@ class UserRepository private constructor(
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
-            Log.e("UserRepository", "HttpException: ${e.message()}")
-            Log.e("UserRepository", "Error Body: $errorBody")
+//            Log.e("UserRepository", "HttpException: ${e.message()}")
+//            Log.e("UserRepository", "Error Body: $errorBody")
             emit(StateResult.Error(errorResponse.message ?: "Unknown HTTP error"))
         } catch (e: Exception) {
-            Log.e("UserRepository", "Exception: ${e.message}")
+//            Log.e("UserRepository", "Exception: ${e.message}")
             emit(StateResult.Error(e.message ?: "Unknown error"))
         }
     }

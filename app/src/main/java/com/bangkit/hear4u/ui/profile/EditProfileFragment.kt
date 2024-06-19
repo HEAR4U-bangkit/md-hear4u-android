@@ -71,11 +71,13 @@ class EditProfileFragment : Fragment() {
                     .observe(viewLifecycleOwner) { result ->
                         when (result) {
                             is StateResult.Loading -> {
+                                showLoading(true)
                                 showToast("Loading")
                             }
 
                             is StateResult.Success -> {
                                 lifecycleScope.launch {
+                                    showLoading(false)
                                     showToast(result.data.message.toString())
                                     viewModel.saveSession(
                                         UserModel(
@@ -91,6 +93,7 @@ class EditProfileFragment : Fragment() {
                             }
 
                             is StateResult.Error -> {
+                                showLoading(false)
                                 showToast(result.error)
                             }
                         }
@@ -99,6 +102,13 @@ class EditProfileFragment : Fragment() {
         } else {
             Toast.makeText(requireContext(), "Silahkan isi terlebih dahulu", Toast.LENGTH_SHORT)
                 .show()
+        }
+    }
+    private fun showLoading(isLoading: Boolean){
+        if(isLoading){
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
         }
     }
 

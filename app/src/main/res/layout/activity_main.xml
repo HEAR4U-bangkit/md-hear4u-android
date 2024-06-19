@@ -277,12 +277,12 @@
                     tools:layout_editor_absoluteY="16dp" />
 
                 <TextView
-                    android:id="@+id/textView17"
+                    android:id="@+id/tv_output"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
                     android:fontFamily="@font/plus_sans_jakarta_medium"
-                    android:text="@string/output"
+                    tools:text="@string/output"
                     android:textColor="@color/background_color"
                     android:textSize="19sp"
                     app:layout_constraintBottom_toBottomOf="parent"
