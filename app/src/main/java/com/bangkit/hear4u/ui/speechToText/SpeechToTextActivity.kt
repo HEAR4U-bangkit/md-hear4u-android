@@ -9,9 +9,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bangkit.hear4u.databinding.ActivitySpeechToTextBinding
 
-class SpeechToTextActivity : AppCompatActivity(), onRecognitionListener  {
+class SpeechToTextActivity : AppCompatActivity(), onRecognitionListener {
     private lateinit var binding: ActivitySpeechToTextBinding
     private lateinit var speechToTextConverter: SpeechToTextConverter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySpeechToTextBinding.inflate(layoutInflater)
@@ -33,15 +34,21 @@ class SpeechToTextActivity : AppCompatActivity(), onRecognitionListener  {
         }
 
         setupClickListener()
+
+        // Show tvMt when the activity starts
+        binding.listen.visibility = View.VISIBLE
     }
 
-    private fun setupClickListener(){
+    private fun setupClickListener() {
         binding.toolbarSpeech.setNavigationOnClickListener {
             finish()
             onBackPressed()
         }
 
         binding.btnSpeak.setOnClickListener {
+            // Hide tvMt when btnSpeak is clicked
+            binding.tvMt.visibility = View.VISIBLE
+
             // Start listening with Indonesian language
             speechToTextConverter.startListening("id-ID")
         }
@@ -50,6 +57,11 @@ class SpeechToTextActivity : AppCompatActivity(), onRecognitionListener  {
             // Stop listening when animation is clicked
             speechToTextConverter.stopListening()
             binding.lavMicAnimation.pauseAnimation()  // Pause the animation
+        }
+
+        // Add click listener to tvMt to hide it when clicked
+        binding.tvMt.setOnClickListener {
+            binding.tvMt.visibility = View.GONE
         }
     }
 
@@ -68,17 +80,20 @@ class SpeechToTextActivity : AppCompatActivity(), onRecognitionListener  {
             }
         }
     }
+
     override fun onDestroy() {
         super.onDestroy()
         // Stop listening
         speechToTextConverter.stopListening()
     }
+
     override fun onReadyForSpeech() {
         binding.btnSpeak.visibility = View.GONE
         binding.tvResult.visibility = View.GONE
+        binding.tvMt.visibility = View.GONE  // Hide tvMt when ready for speech
         binding.lavMicAnimation.visibility = View.VISIBLE
-        binding.loading.visibility =View.VISIBLE
-        binding.logo.visibility=View.VISIBLE
+        binding.loading.visibility = View.VISIBLE
+        binding.logo.visibility = View.VISIBLE
         binding.listen.visibility = View.VISIBLE
     }
 
@@ -90,7 +105,7 @@ class SpeechToTextActivity : AppCompatActivity(), onRecognitionListener  {
         binding.btnSpeak.visibility = View.VISIBLE
         binding.tvResult.visibility = View.VISIBLE
         binding.loading.visibility = View.GONE
-        binding.logo.visibility = View.GONE
+        binding.logo.visibility = View.VISIBLE
         binding.listen.visibility = View.GONE
     }
 
@@ -101,18 +116,19 @@ class SpeechToTextActivity : AppCompatActivity(), onRecognitionListener  {
         binding.tvResult.text = "Sorry, Please try again"
         binding.lavMicAnimation.visibility = View.GONE
         binding.loading.visibility = View.GONE
+        binding.tvMt.visibility = View.GONE  // Hide tvMt on error
         binding.listen.visibility = View.GONE
-        binding.logo.visibility=View.GONE
+        binding.logo.visibility = View.VISIBLE
     }
 
     override fun onResults(results: String) {
         binding.btnSpeak.visibility = View.VISIBLE
         binding.tvResult.visibility = View.VISIBLE
         binding.lavMicAnimation.visibility = View.GONE
-        binding.loading.visibility=View.GONE
-        binding.logo.visibility=View.GONE
+        binding.loading.visibility = View.GONE
+        binding.logo.visibility = View.VISIBLE
+        binding.tvMt.visibility = View.GONE  // Hide tvMt on results
         binding.listen.visibility = View.GONE
         binding.tvResult.text = results
     }
-
 }

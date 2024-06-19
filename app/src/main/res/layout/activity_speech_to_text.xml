@@ -8,6 +8,26 @@
     android:layout_height="match_parent"
     tools:context=".ui.speechToText.SpeechToTextActivity">
 
+    <TextView
+        android:id="@+id/tv_mt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/plus_sans_jakarta_medium"
+        android:textColor="#CDE8E5"
+        android:textSize="40sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/btn_speak"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.489"
+        tools:text="Press the microphone button below and start talking"
+        tools:visibility="visible" />
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -56,6 +76,8 @@
         android:id="@+id/tv_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:background="#00FFFFFF"
         android:fontFamily="@font/plus_sans_jakarta_medium"
         android:textColor="#CDE8E5"
@@ -127,7 +149,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:background="#00FFFFFF"
-        android:visibility="gone"
+        android:visibility="visible"
         tools:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.163"
@@ -148,7 +170,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:background="#00FFFFFF"
-        android:visibility="gone"
+        android:visibility="visible"
         tools:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintStart_toEndOf="@+id/logo"
