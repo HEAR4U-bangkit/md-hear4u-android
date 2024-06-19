@@ -1,5 +1,6 @@
 package com.bangkit.hear4u.ui.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,7 @@ import androidx.fragment.app.viewModels
 import com.bangkit.hear4u.R
 import com.bangkit.hear4u.databinding.FragmentProfileBinding
 import com.bangkit.hear4u.ui.ViewModelFactory
-import com.bumptech.glide.Glide
+import com.bangkit.hear4u.ui.landingPage.LandingActivity
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
@@ -30,14 +31,10 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
-//        //Circle Profile
-//        Glide.with(binding.root)
-//            .load(R.drawable.profile_photo_logo)
-//            .circleCrop()
-//            .into(binding.ivProfile)
-
         binding.logout.setOnClickListener {
             viewModel.logout()
+            val intent  = Intent(requireContext(), LandingActivity::class.java)
+            startActivity(intent)
             requireActivity().finish()
         }
 
@@ -49,7 +46,16 @@ class ProfileFragment : Fragment() {
             aboutFragment()
         }
 
+        getSession()
+
     }
+
+    private fun getSession() {
+        viewModel.getSession().observe(viewLifecycleOwner) { user ->
+            binding.tvUsername.text = user.fullname
+        }
+    }
+
     private fun editProfileFragment() {
         val fragmentManager = requireActivity().supportFragmentManager
         val childFragment = EditProfileFragment()
@@ -59,7 +65,7 @@ class ProfileFragment : Fragment() {
             .commit()
     }
 
-    private fun aboutFragment(){
+    private fun aboutFragment() {
         val fragmentManager = requireActivity().supportFragmentManager
         val childFragment = AboutFragment()
         fragmentManager.beginTransaction()
@@ -67,6 +73,7 @@ class ProfileFragment : Fragment() {
             .addToBackStack(null)
             .commit()
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

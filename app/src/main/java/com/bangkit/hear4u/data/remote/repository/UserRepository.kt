@@ -11,13 +11,15 @@ import com.bangkit.hear4u.data.remote.response.DetailArticleResponse
 import com.bangkit.hear4u.data.remote.response.ErrorResponse
 import com.bangkit.hear4u.data.remote.response.LoginResponse
 import com.bangkit.hear4u.data.remote.response.RegisterResponse
+import com.bangkit.hear4u.data.remote.response.UpdatePasswordResponse
+import com.bangkit.hear4u.data.remote.response.UpdateProfileResponse
 import com.bangkit.hear4u.di.StateResult
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
 
 
-class UserRepository private constructor (
+class UserRepository private constructor(
     private val apiService: ApiService,
     private val userPreferences: UserPreferences,
 ) {
@@ -45,7 +47,7 @@ class UserRepository private constructor (
         }
     }
 
-    suspend fun logout(){
+    suspend fun logout() {
         userPreferences.logout()
     }
 
@@ -57,11 +59,11 @@ class UserRepository private constructor (
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
-            Log.e("UserRepository", "HttpException: ${e.message()}")
-            Log.e("UserRepository", "Error Body: $errorBody")
+//            Log.e("UserRepository", "HttpException: ${e.message()}")
+//            Log.e("UserRepository", "Error Body: $errorBody")
             emit(StateResult.Error(errorResponse.message ?: "Unknown HTTP error"))
         } catch (e: Exception) {
-            Log.e("UserRepository", "Exception: ${e.message}")
+//            Log.e("UserRepository", "Exception: ${e.message}")
             emit(StateResult.Error(e.message ?: "Unknown error"))
         }
     }
@@ -88,6 +90,40 @@ class UserRepository private constructor (
         return userPreferences.getSession()
     }
 
+
+    fun changePassword(
+        id: String,
+        oldPassword: String,
+        newPassword: String,
+        confirmPassword: String
+    ): LiveData<StateResult<UpdatePasswordResponse>> = liveData {
+        emit(StateResult.Loading)
+        try {
+            val responseSuccess = apiService.changePassword(id, oldPassword, newPassword, confirmPassword)
+            emit(StateResult.Success(responseSuccess))
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val responseError = Gson().fromJson(errorBody, UpdatePasswordResponse::class.java)
+            emit(StateResult.Error(responseError.message.toString()))
+        }
+    }
+
+    fun editProfile(
+        id: String,
+        email: String,
+        fullname: String
+    ): LiveData<StateResult<UpdateProfileResponse>> = liveData {
+        emit(StateResult.Loading)
+        try {
+            val responseSuccess = apiService.editProfile(id, fullname, email)
+            emit(StateResult.Success(responseSuccess))
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val responseError = Gson().fromJson(errorBody, UpdateProfileResponse::class.java)
+            emit(StateResult.Error(responseError.message.toString()))
+        }
+    }
+
     companion object {
         @Volatile
         private var INSTANCE: UserRepository? = null
@@ -95,12 +131,13 @@ class UserRepository private constructor (
         fun clearInstance() {
             INSTANCE = null
         }
+
         fun getInstance(
             apiService: ApiService,
-            userPreferences: UserPreferences
+            userPreferences: UserPreferences,
         ): UserRepository =
-            INSTANCE ?: synchronized(this){
-                INSTANCE ?: UserRepository(apiService,userPreferences)
+            INSTANCE ?: synchronized(this) {
+                INSTANCE ?: UserRepository(apiService, userPreferences)
             }.also { INSTANCE = it }
     }
 
