@@ -22,6 +22,9 @@
             android:exported="false" />
 
         <activity
+            android:name=".ui.speechToText.SpeechToTextActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
         <activity

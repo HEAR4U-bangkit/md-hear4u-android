@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.bangkit.hear4u"
-        minSdk = 26
+        minSdk = 29
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -73,6 +73,8 @@ dependencies {
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     //Material
     implementation ("androidx.compose.material3:material3:1.2.1")
+
+    implementation("com.airbnb.android:lottie:5.2.0")
 
     //SocketIO
     implementation ("io.socket:socket.io-client:2.0.1")

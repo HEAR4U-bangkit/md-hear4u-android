@@ -17,7 +17,7 @@
     <string name="tv_continue">Continue</string>
     <string name="hear4u">Hear4U</string>
     <string name="hello_user_placeholder">Hi, %1$s</string>
-    <string name="ask_home">let\'s see, what can i do for you?</string>
+    <string name="ask_home">Let\'s see, what can i do for you?</string>
     <string name="chit_home">Help People to talk \nwith you</string>
     <string name="information_title">Helpful Information</string>
     <string name="button_back">Button Back</string>
@@ -42,4 +42,5 @@
     <string name="listening">Listening…</string>
     <string name="label_confidence">Label: %1$s, Confidence: %2$s%</string>
     <string name="about_text">Hear4U is an innovative application designed to support individuals with hearing disabilities by capturing and visually presenting surrounding sounds via a microphone. This app aims to enhance the ability of users to comprehend and respond to their environment, thus improving their quality of life and social interactions. By leveraging advanced speech recognition technology, Hear4U ensures that users can easily and accurately identify different sound types.</string>
+    <string name="hear">Identify various types of audio</string>
 </resources>

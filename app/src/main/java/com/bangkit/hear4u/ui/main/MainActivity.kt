@@ -26,6 +26,7 @@ import com.bangkit.hear4u.services.SocketManager
 import com.bangkit.hear4u.ui.ViewModelFactory
 import com.bangkit.hear4u.ui.landingPage.LandingActivity
 import com.bangkit.hear4u.ui.profile.ProfileActivity
+import com.bangkit.hear4u.ui.speechToText.SpeechToTextActivity
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -73,6 +74,7 @@ class MainActivity : AppCompatActivity() {
                         binding.progressBar3.visibility = View.INVISIBLE
                         val error = article.error
                         Toast.makeText(this@MainActivity, error, Toast.LENGTH_SHORT).show()
+
                     }
 
                     is StateResult.Loading -> {
@@ -128,6 +130,10 @@ class MainActivity : AppCompatActivity() {
     private fun setupClickListeners() {
         binding.profil.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+        binding.speechText.setOnClickListener {
+            val intent = Intent(this, SpeechToTextActivity::class.java)
             startActivity(intent)
         }
     }
