@@ -17,18 +17,18 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
     suspend fun saveSession(user: UserModel) {
         dataStore.edit { preferences ->
             preferences[TOKEN_KEY] = user.token
+            preferences[ID_KEY] = user.id
             preferences[EMAIL_KEY] = user.email
             preferences[FULLNAME_KEY] = user.fullname
             preferences[IS_LOGIN_KEY] = true
         }
-        // Logging for debugging
-        println("User session saved: email=${user.email}, fullname=${user.fullname}, token=${user.token}")
     }
 
     fun getSession(): Flow<UserModel> {
         return dataStore.data.map { preferences ->
             UserModel(
                 preferences[TOKEN_KEY] ?: "",
+                preferences[ID_KEY] ?: "",
                 preferences[EMAIL_KEY] ?: "",
                 preferences[FULLNAME_KEY] ?: "",
                 preferences[IS_LOGIN_KEY] ?: false
@@ -48,6 +48,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
     companion object {
 
         private val EMAIL_KEY = stringPreferencesKey("email")
+        private val ID_KEY = stringPreferencesKey("id")
         private val FULLNAME_KEY = stringPreferencesKey("fullname")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")

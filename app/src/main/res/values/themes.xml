@@ -8,7 +8,9 @@
         <item name="materialSwitchStyle">@style/Widget.App.Switch</item>
     </style>
 
-    <style name="Theme.Hear4U" parent="Base.Theme.Hear4U" />
+    <style name="Theme.Hear4U" parent="Base.Theme.Hear4U">
+        <item name="android:background">@color/background_color</item>
+    </style>
     <style name="Base.Theme.Hear4U.ButtonVariant1" parent="Widget.Material3.Button">
         <item name="colorPrimary">@color/second_color</item>
         <item name="colorOnPrimary">@color/primary_color</item>

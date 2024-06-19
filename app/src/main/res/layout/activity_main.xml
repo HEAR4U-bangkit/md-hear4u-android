@@ -92,7 +92,8 @@
                     android:id="@+id/speech_text"
                     android:layout_width="0dp"
                     android:layout_height="180dp"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginTop="-75dp"
                     app:cardBackgroundColor="@color/card"
                     app:cardCornerRadius="26dp"
@@ -152,11 +153,12 @@
 
                         <TextView
                             android:id="@+id/textView15"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="4dp"
                             android:layout_marginEnd="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
                             android:background="#00FFFFFF"
                             android:fontFamily="@font/plus_sans_jakarta_medium"
                             android:text="@string/chit_home"
@@ -173,7 +175,8 @@
                     android:id="@+id/cv_sound"
                     android:layout_width="0dp"
                     android:layout_height="180dp"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="-75dp"
                     app:cardCornerRadius="26dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -231,13 +234,15 @@
 
                         <TextView
                             android:id="@+id/textView20"
-                            android:layout_width="133dp"
-                            android:layout_height="43dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="4dp"
+                            android:layout_marginEnd="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
                             android:background="#00FFFFFF"
                             android:fontFamily="@font/plus_sans_jakarta_medium"
-                            android:text="@string/hear"
+                            android:text="@string/help_people_to_talk_nwith_you"
                             android:textColor="@color/background_color"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/guideline3" />
@@ -262,16 +267,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_margin="20dp"
-                android:background="@drawable/rectangle_output"
-                >
+                android:background="@android:color/transparent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/rectangle_output"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="16dp" />
 
                 <TextView
-                    android:id="@+id/textView17"
+                    android:id="@+id/tv_output"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00FFFFFF"
                     android:fontFamily="@font/plus_sans_jakarta_medium"
-                    android:text="@string/output"
+                    tools:text="@string/output"
                     android:textColor="@color/background_color"
                     android:textSize="19sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -284,7 +295,6 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:id="@+id/bawah"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -319,10 +329,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/recyclerView"
-                    app:layout_constraintVertical_bias="0.55" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

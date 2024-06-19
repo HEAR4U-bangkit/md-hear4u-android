@@ -59,6 +59,7 @@ class LoginActivity : AppCompatActivity() {
                                 saveSession(
                                     UserModel(
                                         user.data.data.token,
+                                        user.data.data.user.id,
                                         user.data.data.user.email,
                                         user.data.data.user.fullname,
                                         true
